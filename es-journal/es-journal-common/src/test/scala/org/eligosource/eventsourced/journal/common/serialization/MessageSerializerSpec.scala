@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.eligosource.eventsourced.core
+package org.eligosource.eventsourced.journal.common.serialization
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
@@ -26,6 +26,8 @@ import com.typesafe.config.ConfigFactory
 
 import org.scalatest.fixture._
 import org.scalatest.matchers.MustMatchers
+
+import org.eligosource.eventsourced.core.Message
 
 class MessageSerializerSpec extends WordSpec with MustMatchers {
   import MessageSerializerSpec._
@@ -64,7 +66,7 @@ class MessageSerializerSpec extends WordSpec with MustMatchers {
     "serialize event messages" in { fixture =>
       import fixture._
       Thread.sleep(100)
-      request(client.actorFor("akka://server@127.0.0.1:2652/user/remote"))(Message("a")) must be(Message("re: a"))
+      request(client.actorFor("akka.tcp://server@127.0.0.1:2652/user/remote"))(Message("a")) must be(Message("re: a"))
     }
   }
 }

@@ -20,13 +20,13 @@ import com.typesafe.sbt.osgi.SbtOsgi.{ OsgiKeys, osgiSettings, defaultOsgiSettin
 
 object Version {
   val Scala = "2.10.1"
-  val Akka = "2.1.2"
+  val Akka = "2.2-M3"
   val ScalaTest = "1.9.1"
 }
 
 object Compiler {
   val defaultSettings = Seq(
-    scalacOptions in Compile ++= Seq("-target:jvm-1.6", "-unchecked", "-feature", "-language:postfixOps", "-language:implicitConversions"),
+    scalacOptions in Compile ++= Seq("-target:jvm-1.6", "-deprecation", "-unchecked", "-feature", "-language:postfixOps", "-language:implicitConversions"),
     javacOptions in Compile ++= Seq("-source", "1.6", "-target", "1.6")
   )
 }
